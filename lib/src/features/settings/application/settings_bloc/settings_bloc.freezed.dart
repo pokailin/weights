@@ -18,43 +18,37 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() unitChanged,
-    required TResult Function() weekStartChanged,
+    required TResult Function(MeasurementUnit unit) unitChanged,
+    required TResult Function(WeekStart start) weekStartChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? unitChanged,
-    TResult? Function()? weekStartChanged,
+    TResult? Function(MeasurementUnit unit)? unitChanged,
+    TResult? Function(WeekStart start)? weekStartChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? unitChanged,
-    TResult Function()? weekStartChanged,
+    TResult Function(MeasurementUnit unit)? unitChanged,
+    TResult Function(WeekStart start)? weekStartChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_UnitChanged value) unitChanged,
     required TResult Function(_WeekStartChanged value) weekStartChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_UnitChanged value)? unitChanged,
     TResult? Function(_WeekStartChanged value)? weekStartChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_UnitChanged value)? unitChanged,
     TResult Function(_WeekStartChanged value)? weekStartChanged,
     required TResult orElse(),
@@ -81,117 +75,12 @@ class _$SettingsEventCopyWithImpl<$Res, $Val extends SettingsEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Started implements _Started {
-  const _$_Started();
-
-  @override
-  String toString() {
-    return 'SettingsEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() unitChanged,
-    required TResult Function() weekStartChanged,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? unitChanged,
-    TResult? Function()? weekStartChanged,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? unitChanged,
-    TResult Function()? weekStartChanged,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_UnitChanged value) unitChanged,
-    required TResult Function(_WeekStartChanged value) weekStartChanged,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_UnitChanged value)? unitChanged,
-    TResult? Function(_WeekStartChanged value)? weekStartChanged,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_UnitChanged value)? unitChanged,
-    TResult Function(_WeekStartChanged value)? weekStartChanged,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements SettingsEvent {
-  const factory _Started() = _$_Started;
-}
-
-/// @nodoc
 abstract class _$$_UnitChangedCopyWith<$Res> {
   factory _$$_UnitChangedCopyWith(
           _$_UnitChanged value, $Res Function(_$_UnitChanged) then) =
       __$$_UnitChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MeasurementUnit unit});
 }
 
 /// @nodoc
@@ -201,57 +90,78 @@ class __$$_UnitChangedCopyWithImpl<$Res>
   __$$_UnitChangedCopyWithImpl(
       _$_UnitChanged _value, $Res Function(_$_UnitChanged) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? unit = null,
+  }) {
+    return _then(_$_UnitChanged(
+      null == unit
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as MeasurementUnit,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_UnitChanged implements _UnitChanged {
-  const _$_UnitChanged();
+  const _$_UnitChanged(this.unit);
+
+  @override
+  final MeasurementUnit unit;
 
   @override
   String toString() {
-    return 'SettingsEvent.unitChanged()';
+    return 'SettingsEvent.unitChanged(unit: $unit)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UnitChanged);
+        (other.runtimeType == runtimeType &&
+            other is _$_UnitChanged &&
+            (identical(other.unit, unit) || other.unit == unit));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, unit);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UnitChangedCopyWith<_$_UnitChanged> get copyWith =>
+      __$$_UnitChangedCopyWithImpl<_$_UnitChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() unitChanged,
-    required TResult Function() weekStartChanged,
+    required TResult Function(MeasurementUnit unit) unitChanged,
+    required TResult Function(WeekStart start) weekStartChanged,
   }) {
-    return unitChanged();
+    return unitChanged(unit);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? unitChanged,
-    TResult? Function()? weekStartChanged,
+    TResult? Function(MeasurementUnit unit)? unitChanged,
+    TResult? Function(WeekStart start)? weekStartChanged,
   }) {
-    return unitChanged?.call();
+    return unitChanged?.call(unit);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? unitChanged,
-    TResult Function()? weekStartChanged,
+    TResult Function(MeasurementUnit unit)? unitChanged,
+    TResult Function(WeekStart start)? weekStartChanged,
     required TResult orElse(),
   }) {
     if (unitChanged != null) {
-      return unitChanged();
+      return unitChanged(unit);
     }
     return orElse();
   }
@@ -259,7 +169,6 @@ class _$_UnitChanged implements _UnitChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_UnitChanged value) unitChanged,
     required TResult Function(_WeekStartChanged value) weekStartChanged,
   }) {
@@ -269,7 +178,6 @@ class _$_UnitChanged implements _UnitChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_UnitChanged value)? unitChanged,
     TResult? Function(_WeekStartChanged value)? weekStartChanged,
   }) {
@@ -279,7 +187,6 @@ class _$_UnitChanged implements _UnitChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_UnitChanged value)? unitChanged,
     TResult Function(_WeekStartChanged value)? weekStartChanged,
     required TResult orElse(),
@@ -292,7 +199,12 @@ class _$_UnitChanged implements _UnitChanged {
 }
 
 abstract class _UnitChanged implements SettingsEvent {
-  const factory _UnitChanged() = _$_UnitChanged;
+  const factory _UnitChanged(final MeasurementUnit unit) = _$_UnitChanged;
+
+  MeasurementUnit get unit;
+  @JsonKey(ignore: true)
+  _$$_UnitChangedCopyWith<_$_UnitChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -300,6 +212,8 @@ abstract class _$$_WeekStartChangedCopyWith<$Res> {
   factory _$$_WeekStartChangedCopyWith(
           _$_WeekStartChanged value, $Res Function(_$_WeekStartChanged) then) =
       __$$_WeekStartChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WeekStart start});
 }
 
 /// @nodoc
@@ -309,57 +223,78 @@ class __$$_WeekStartChangedCopyWithImpl<$Res>
   __$$_WeekStartChangedCopyWithImpl(
       _$_WeekStartChanged _value, $Res Function(_$_WeekStartChanged) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? start = null,
+  }) {
+    return _then(_$_WeekStartChanged(
+      null == start
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as WeekStart,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_WeekStartChanged implements _WeekStartChanged {
-  const _$_WeekStartChanged();
+  const _$_WeekStartChanged(this.start);
+
+  @override
+  final WeekStart start;
 
   @override
   String toString() {
-    return 'SettingsEvent.weekStartChanged()';
+    return 'SettingsEvent.weekStartChanged(start: $start)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WeekStartChanged);
+        (other.runtimeType == runtimeType &&
+            other is _$_WeekStartChanged &&
+            (identical(other.start, start) || other.start == start));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, start);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WeekStartChangedCopyWith<_$_WeekStartChanged> get copyWith =>
+      __$$_WeekStartChangedCopyWithImpl<_$_WeekStartChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() unitChanged,
-    required TResult Function() weekStartChanged,
+    required TResult Function(MeasurementUnit unit) unitChanged,
+    required TResult Function(WeekStart start) weekStartChanged,
   }) {
-    return weekStartChanged();
+    return weekStartChanged(start);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? unitChanged,
-    TResult? Function()? weekStartChanged,
+    TResult? Function(MeasurementUnit unit)? unitChanged,
+    TResult? Function(WeekStart start)? weekStartChanged,
   }) {
-    return weekStartChanged?.call();
+    return weekStartChanged?.call(start);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? unitChanged,
-    TResult Function()? weekStartChanged,
+    TResult Function(MeasurementUnit unit)? unitChanged,
+    TResult Function(WeekStart start)? weekStartChanged,
     required TResult orElse(),
   }) {
     if (weekStartChanged != null) {
-      return weekStartChanged();
+      return weekStartChanged(start);
     }
     return orElse();
   }
@@ -367,7 +302,6 @@ class _$_WeekStartChanged implements _WeekStartChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_UnitChanged value) unitChanged,
     required TResult Function(_WeekStartChanged value) weekStartChanged,
   }) {
@@ -377,7 +311,6 @@ class _$_WeekStartChanged implements _WeekStartChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_UnitChanged value)? unitChanged,
     TResult? Function(_WeekStartChanged value)? weekStartChanged,
   }) {
@@ -387,7 +320,6 @@ class _$_WeekStartChanged implements _WeekStartChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_UnitChanged value)? unitChanged,
     TResult Function(_WeekStartChanged value)? weekStartChanged,
     required TResult orElse(),
@@ -400,7 +332,12 @@ class _$_WeekStartChanged implements _WeekStartChanged {
 }
 
 abstract class _WeekStartChanged implements SettingsEvent {
-  const factory _WeekStartChanged() = _$_WeekStartChanged;
+  const factory _WeekStartChanged(final WeekStart start) = _$_WeekStartChanged;
+
+  WeekStart get start;
+  @JsonKey(ignore: true)
+  _$$_WeekStartChangedCopyWith<_$_WeekStartChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

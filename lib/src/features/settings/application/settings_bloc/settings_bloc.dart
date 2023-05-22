@@ -6,9 +6,16 @@ part 'settings_state.dart';
 part 'settings_bloc.freezed.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
-  SettingsBloc() : super(_Initial()) {
+  SettingsBloc() : super(const _Initial()) {
     on<SettingsEvent>((event, emit) {
-      // TODO: implement event handler
+      event.map(
+        unitChanged: (event) => emit(
+          state.copyWith(unit: event.unit),
+        ),
+        weekStartChanged: (event) => emit(
+          state.copyWith(start: event.start),
+        ),
+      );
     });
   }
 }
