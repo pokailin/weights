@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weights/src/features/workouts/workouts.dart';
+import 'package:weights/src/features/workouts/presentation/workouts.dart';
 
 import '../features/home/presentation/home_screen.dart';
 
