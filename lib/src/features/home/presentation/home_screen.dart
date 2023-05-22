@@ -11,7 +11,9 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Weights'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
-          IconButton(onPressed: () => {}, icon: const Icon(Icons.settings))
+          IconButton(
+              onPressed: () => context.go('/settings'),
+              icon: const Icon(Icons.settings))
         ],
       ),
       body: Padding(

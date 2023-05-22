@@ -1,8 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weights/src/features/workouts/presentation/workouts.dart';
 
 import '../features/home/presentation/home_screen.dart';
+import '../features/settings/presentation/settings.dart';
+import '../features/workouts/presentation/workouts.dart';
 
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
@@ -15,6 +16,10 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: 'workouts',
           builder: (context, state) => const Workouts(),
+        ),
+        GoRoute(
+          path: 'settings',
+          builder: (context, state) => const Settings(),
         ),
       ],
     ),
