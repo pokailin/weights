@@ -21,8 +21,11 @@ class UnitTile extends StatelessWidget {
           ),
           BlocBuilder<SettingsBloc, SettingsState>(
             builder: (context, state) {
+              final text =
+                  state.unit == MeasurementUnit.metric ? 'Metric' : 'Imperial';
+
               return Text(
-                state.unit == MeasurementUnit.metric ? 'Metric' : 'Imperial',
+                text,
                 style: const TextStyle(color: Colors.black87),
               );
             },
