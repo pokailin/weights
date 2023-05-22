@@ -2,7 +2,15 @@ part of 'settings_bloc.dart';
 
 enum MeasurementUnit { metric, imperial }
 
-enum WeekStart { saturday, sunday, monday }
+enum WeekStart {
+  saturday('Saturday'),
+  sunday('Sunday'),
+  monday('Monday');
+
+  const WeekStart(this.value);
+
+  final String value;
+}
 
 @freezed
 class SettingsState with _$SettingsState {
