@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../application/settings_bloc/settings_bloc.dart';
 
-class UnitTile extends StatelessWidget {
-  const UnitTile({
+class WeekStartTile extends StatelessWidget {
+  const WeekStartTile({
     super.key,
   });
 
@@ -16,20 +16,20 @@ class UnitTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Unit System',
+            'Calendar Week Start',
             style: TextStyle(color: Colors.black, fontSize: 20),
           ),
           BlocBuilder<SettingsBloc, SettingsState>(
             builder: (context, state) {
               return Text(
-                state.unit == MeasurementUnit.metric ? 'Metric' : 'Imperial',
+                state.start.value,
                 style: const TextStyle(color: Colors.black87),
               );
             },
           ),
         ],
       ),
-      onTap: () => {
+      onTap: () {
         showModalBottomSheet(
           context: context,
           builder: (context) => const Padding(
@@ -41,32 +41,34 @@ class UnitTile extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _UnitButton(MeasurementUnit.metric),
+                _WeekStartButton(WeekStart.saturday),
                 Divider(
                   color: Colors.black12,
                 ),
-                _UnitButton(MeasurementUnit.imperial),
+                _WeekStartButton(WeekStart.sunday),
+                Divider(
+                  color: Colors.black12,
+                ),
+                _WeekStartButton(WeekStart.monday),
               ],
             ),
           ),
-        )
+        );
       },
     );
   }
 }
 
-class _UnitButton extends StatelessWidget {
-  const _UnitButton(
-    this.unit, {
+class _WeekStartButton extends StatelessWidget {
+  const _WeekStartButton(
+    this.startDay, {
     super.key,
   });
 
-  final MeasurementUnit unit;
+  final WeekStart startDay;
 
   @override
   Widget build(BuildContext context) {
-    final unitString = unit == MeasurementUnit.metric ? 'Metric' : 'Imperial';
-
     return BlocBuilder<SettingsBloc, SettingsState>(
       builder: (context, state) {
         return OutlinedButton(
@@ -76,18 +78,18 @@ class _UnitButton extends StatelessWidget {
             ),
             side: BorderSide(
               width: 2,
-              color: state.unit == unit ? Colors.blue : Colors.transparent,
+              color: state.start == startDay ? Colors.blue : Colors.transparent,
             ),
           ),
           onPressed: () {
             context.read<SettingsBloc>().add(
-                  SettingsEvent.unitChanged(
-                    unit,
+                  SettingsEvent.weekStartChanged(
+                    startDay,
                   ),
                 );
             context.pop();
           },
-          child: Text(unitString),
+          child: Text(startDay.value),
         );
       },
     );
