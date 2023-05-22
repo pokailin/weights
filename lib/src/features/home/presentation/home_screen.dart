@@ -9,6 +9,9 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Weights'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.settings))
+        ],
       ),
     );
   }
