@@ -13,6 +13,39 @@ class HomeScreen extends StatelessWidget {
           IconButton(onPressed: () => {}, icon: const Icon(Icons.settings))
         ],
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const Spacer(),
+            const Text(
+              'No Workouts Recorded',
+              textAlign: TextAlign.center,
+            ),
+            const Spacer(),
+            TextButton(
+              onPressed: () => {},
+              child: const Column(
+                children: [
+                  Icon(Icons.add),
+                  Text('Add Workout'),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+            TextButton(
+              onPressed: () => {},
+              child: const Column(
+                children: [
+                  Icon(Icons.document_scanner),
+                  Text('Copy Previous Workout'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
