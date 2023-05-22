@@ -39,35 +39,72 @@ class Settings extends StatelessWidget {
             onTap: () => {
               showModalBottomSheet(
                 context: context,
-                builder: (context) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        context.read<SettingsBloc>().add(
-                              const SettingsEvent.unitChanged(
-                                MeasurementUnit.metric,
+                builder: (context) => Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 24,
+                    horizontal: 16,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      BlocBuilder<SettingsBloc, SettingsState>(
+                        builder: (context, state) {
+                          return OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6.0),
                               ),
-                            );
-                        context.pop();
-                      },
-                      child: const Text('Metric'),
-                    ),
-                    const Divider(
-                      color: Colors.black12,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        context.read<SettingsBloc>().add(
-                              const SettingsEvent.unitChanged(
-                                MeasurementUnit.imperial,
+                              side: BorderSide(
+                                width: 2,
+                                color: state.unit == MeasurementUnit.metric
+                                    ? Colors.blue
+                                    : Colors.transparent,
                               ),
-                            );
-                        context.pop();
-                      },
-                      child: const Text('Imperial'),
-                    ),
-                  ],
+                            ),
+                            onPressed: () {
+                              context.read<SettingsBloc>().add(
+                                    const SettingsEvent.unitChanged(
+                                      MeasurementUnit.metric,
+                                    ),
+                                  );
+                              context.pop();
+                            },
+                            child: const Text('Metric'),
+                          );
+                        },
+                      ),
+                      const Divider(
+                        color: Colors.black12,
+                      ),
+                      BlocBuilder<SettingsBloc, SettingsState>(
+                        builder: (context, state) {
+                          return OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6.0),
+                              ),
+                              side: BorderSide(
+                                width: 2,
+                                color: state.unit == MeasurementUnit.imperial
+                                    ? Colors.blue
+                                    : Colors.transparent,
+                              ),
+                            ),
+                            onPressed: () {
+                              context.read<SettingsBloc>().add(
+                                    const SettingsEvent.unitChanged(
+                                      MeasurementUnit.imperial,
+                                    ),
+                                  );
+                              context.pop();
+                            },
+                            child: const Text('Imperial'),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               )
             },
